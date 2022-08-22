@@ -14,26 +14,27 @@ window.addEventListener("load", function () {
         console.log(listedPlanets);
         // Below this comment call the appropriate helper functions to pick a planet fom the list of planets and add that information to your destination.
 
-        let planet = pickPlanet(listedPlanetsResponse);
+        let planet = pickPlanet(listedPlanets);
 
-        addDestinationInfo(document, planet.name, planet.diameter, planet.star, planet.distance, planet.moons, planet.imageUrl);
+        addDestinationInfo(document, planet.name, planet.diameter, planet.star, planet.distance, planet.moons, planet.image);
     });
 
     let faultyItems = document.getElementById("faultyItems");
     let list = faultyItems;
+    list.style.visibility = "hidden";
+    let form = document.querySelector("form");
 
     form.addEventListener("submit", function (event) {
         event.preventDefault();
-
-        let pilotInput = document.getElementById("input[name=pilotName]");
+ 
+        let pilotInput = document.querySelector("input[name=pilotName]");
         let pilot = pilotInput.value;
         let copilotInput = document.querySelector("input[name=copilotName]");
         let copilot = copilotInput.value;
         let fuelLevelInput = document.querySelector("input[name=fuelLevel]");
-        let fuelLevel = fuelLevelInput.value;
+        let fuelLevel = Number(fuelLevelInput.value);
         let cargoLevelInput = document.querySelector("input[name=cargoMass]");
-        let cargoLevel = cargoLevelInput.value;
-
+        let cargoLevel = Number(cargoLevelInput.value);
 
         formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel);
 
